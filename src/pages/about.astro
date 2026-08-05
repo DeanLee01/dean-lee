@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import authorPhoto from '../assets/dean-lee.jpg';
 import { AUTHOR, SITE_TITLE } from '../consts';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
@@ -6,8 +8,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title={`About - ${SITE_TITLE}`} description="On the author: quantitative finance, stochastic pricing, the economics of AI.">
 	<div class="wrap">
 		<section class="sec" style="border-bottom:none;">
-			<div class="about" style="border-bottom:none;padding-top:0;">
-				<div class="seal" aria-hidden="true">{AUTHOR.name.slice(0, 1)}</div>
+			<div class="about about-with-photo" style="border-bottom:none;padding-top:0;">
+				<figure class="about-photo">
+					<Image
+						src={authorPhoto}
+						alt={AUTHOR.photoAlt}
+						widths={[240, 360, 480]}
+						sizes="180px"
+						quality={82}
+						class="about-photo-img"
+					/>
+				</figure>
 				<div>
 					<p class="label" style="margin-bottom:0.85rem;">On the author</p>
 					<h3 style="margin-bottom:0.85rem;">About</h3>

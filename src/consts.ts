@@ -18,6 +18,7 @@ export const AUTHOR = {
 	born: '7 April 2003',
 	edu: "Master's in Business, CUHK",
 	bio: "I work in quantitative finance - stochastic models, option and futures pricing. My core work is putting a number on uncertainty: computing what a financial contract is worth today when its payoff depends on events that have not happened yet. A market is really a mechanism that binds probability to money, and my job is to read and price the distribution underneath.",
+	photoAlt: 'Dean Lee at a wooden desk with a laptop, wearing glasses and a black cat T-shirt',
 };
 
 export const NAV_LINKS = [
