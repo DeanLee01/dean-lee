@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: Dean Holloway Modern Editorial
+name: Dean Lee Modern Editorial
 description: A premium editorial design system for a quantitative finance essay site.
 colors:
   primary: "#161412"
@@ -57,7 +57,7 @@ components:
 
 ## Overview
 
-Dean Holloway's site is a modern editorial review: quiet, exact, and text-led. The interface should feel like a contemporary long-form magazine for markets and probability, not a nostalgic newspaper or a SaaS template.
+Dean Lee's site is a modern editorial review: quiet, exact, and text-led. The interface should feel like a contemporary long-form magazine for markets and probability, not a nostalgic newspaper or a SaaS template.
 
 ## Colors
 

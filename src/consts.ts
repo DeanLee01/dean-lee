@@ -1,6 +1,6 @@
 // Global site data.
 
-export const SITE_TITLE = 'Dean Holloway';
+export const SITE_TITLE = 'Dean Lee';
 export const SITE_TAGLINE = 'markets are probability with money attached.';
 export const SITE_DESCRIPTION =
 	'Notes on stochastic pricing, derivatives, and the economics of AI - for people who like being argued with, gently.';
@@ -13,7 +13,7 @@ export const FOOTER_TAG =
 export const COLOPHON_LINE = 'Steelman before you argue';
 
 export const AUTHOR = {
-	name: 'Dean Holloway',
+	name: 'Dean Lee',
 	pronouns: 'he/him',
 	born: '7 April 2003',
 	edu: "Master's in Business, CUHK",
