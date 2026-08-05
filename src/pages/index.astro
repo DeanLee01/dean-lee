@@ -1,0 +1,160 @@
+---
+import { getCollection } from 'astro:content';
+import { AUTHOR, COLUMNS, EPIGRAPH, SITE_DESCRIPTION, SITE_TAGLINE, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const essays = (await getCollection('essays')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const featured = essays[0];
+const recent = essays.slice(0, 4);
+
+const papers = (await getCollection('papers')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const working = papers.filter((p) => p.data.status === 'working');
+const published = papers.filter((p) => p.data.status === 'published');
+
+const fmt = (d: Date) => d.toLocaleDateString('en-CA').replace(/-/g, '.');
+---
+
+<BaseLayout title={`${SITE_TITLE} - ${SITE_TAGLINE}`} description={SITE_DESCRIPTION}>
+	<div class="wrap">
+		<section class="hero">
+			<div>
+				<p class="label">On the author</p>
+				<p class="lede">{AUTHOR.bio}</p>
+				<p class="vitals">Born {AUTHOR.born} / {AUTHOR.edu} / {AUTHOR.pronouns}</p>
+				<blockquote class="epigraph">&ldquo;{EPIGRAPH}&rdquo;</blockquote>
+				<div class="cta">
+					<a class="btn gold" href="/essays">Latest essay</a>
+					<a class="btn" href="/#newsletter">Subscribe</a>
+				</div>
+			</div>
+			<figure class="art" aria-label="An option payoff diagram">
+				<svg viewBox="0 0 320 250" role="img">
+					<rect width="320" height="250" fill="var(--surface)"></rect>
+					<g stroke="var(--rule-strong)" stroke-width="1">
+						<path d="M30 195 H300 M30 28 V195"></path>
+					</g>
+					<g stroke="var(--rule)" stroke-width=".6">
+						<path d="M30 145 H300 M30 95 H300 M110 28 V195 M190 28 V195 M270 28 V195"></path>
+					</g>
+					<line x1="30" y1="145" x2="300" y2="145" stroke="var(--accent)" stroke-width=".8" stroke-dasharray="3 3"></line>
+					<path d="M30 145 L150 145 L300 48" fill="none" stroke="var(--ink)" stroke-width="2"></path>
+					<path d="M30 165 L150 165 L150 145" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 3"></path>
+					<circle cx="150" cy="145" r="4" fill="var(--accent)"></circle>
+					<text x="150" y="216" text-anchor="middle" fill="var(--muted)" font-family="Georgia,serif" font-size="11" font-style="italic">strike K</text>
+					<text x="40" y="46" fill="var(--ink)" font-family="Georgia,serif" font-size="12" font-style="italic">payoff</text>
+					<text x="158" y="180" fill="var(--accent)" font-family="Georgia,serif" font-size="11" font-style="italic">minus premium</text>
+				</svg>
+			</figure>
+		</section>
+
+		<section class="sec" id="featured">
+			<div class="sec-head"><h2>Essay of the week</h2><div class="rule"></div></div>
+			{
+				featured ? (
+					<a class="feature" href={`/essays/${featured.id}/`} style="display:grid;">
+						<div>
+							<blockquote class="quote">&ldquo;{featured.data.description}&rdquo;</blockquote>
+							<p class="byline" style="margin-top:18px;">{fmt(featured.data.pubDate)}</p>
+						</div>
+						<div>
+							<div class="num">No. {String(featured.data.number ?? 14).padStart(3, '0')} / Featured</div>
+							<h3>{featured.data.title}</h3>
+							<p>{featured.data.description}</p>
+							<span class="btn">Continue reading -></span>
+						</div>
+					</a>
+				) : (
+					<div class="empty">
+						No featured essay yet.<br /><span class="g">*</span> The first dispatch is being written.
+					</div>
+				)
+			}
+		</section>
+
+		<section class="sec" id="papers">
+			<div class="sec-head"><h2>Papers</h2><div class="rule"></div></div>
+			{
+				papers.length > 0 ? (
+					<div class="papers">
+						<div>
+							<h3>Working papers</h3>
+							{working.map((p) => (
+								<a class="paper" href={p.data.url ?? '#'}>
+									<span class="st wp">WP / draft</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+								</a>
+							))}
+						</div>
+						<div>
+							<h3>Published</h3>
+							{published.map((p) => (
+								<a class="paper" href={p.data.url ?? '#'}>
+									<span class="st">PUB</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+								</a>
+							))}
+						</div>
+					</div>
+				) : (
+					<div class="empty">
+						No papers catalogued yet.<br /><span class="g">*</span> Working drafts and published work will be listed here.
+					</div>
+				)
+			}
+		</section>
+
+		<section class="sec" id="essays">
+			<div class="sec-head"><h2>Recent essays</h2><div class="rule"></div></div>
+			{
+				recent.length > 0 ? (
+					<div class="essays">
+						{recent.map((e) => (
+							<a class="entry" href={`/essays/${e.id}/`}>
+								<div class="no">{String(e.data.number ?? 0).padStart(2, '0')}</div>
+								<div>
+									{e.data.column && <div class="cat">{e.data.column}</div>}
+									<h4>{e.data.title}</h4>
+									<p>{e.data.description}</p>
+								</div>
+							</a>
+						))}
+					</div>
+				) : (
+					<div class="empty">
+						No essays yet.<br /><span class="g">*</span> One careful dispatch, most weeks - once the first ships.
+					</div>
+				)
+			}
+			{recent.length > 0 && <p style="text-align:center;margin-top:28px;"><a class="btn" href="/essays">Full archive -></a></p>}
+		</section>
+
+		<section class="sec" id="columns" style="border-bottom:none;">
+			<div class="sec-head"><h2>Standing columns</h2><div class="rule"></div></div>
+			<div class="columns">
+				{COLUMNS.map((c) => (
+					<a class="col" href="#">
+						<div class="rn">{c.roman}.</div>
+						<h4>{c.title}</h4>
+						<p set:html={c.desc} />
+					</a>
+				))}
+			</div>
+		</section>
+
+		<section class="sec" id="newsletter">
+			<div class="news">
+				<p class="label">The data, before the take</p>
+				<h2>A weekly dispatch</h2>
+				<p>One essay on pricing, markets, or the economics of AI - for people who like being argued with, gently. No price targets.</p>
+				<form onsubmit="return false">
+					<label for="em" class="skip">Email</label>
+					<input id="em" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@example.com" />
+					<button class="btn gold" type="submit">Subscribe</button>
+				</form>
+				<p class="fine">Weekly / unsubscribe anytime</p>
+			</div>
+		</section>
+	</div>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import { AUTHOR, COLOPHON_LINE, FOOTER_LINKS, FOOTER_TAG, SITE_TITLE, SOCIAL_LINKS } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site">
+	<div class="wrap">
+		<div class="foot-grid">
+			<div class="foot-brand">
+				<div class="title">{SITE_TITLE}</div>
+				<p>{FOOTER_TAG}</p>
+				<div class="socials" aria-label="Elsewhere">
+					{
+						SOCIAL_LINKS.map((s) => (
+							<a href={s.href} target="_blank" rel="me noopener">
+								{s.label}
+							</a>
+						))
+					}
+				</div>
+			</div>
+			<div>
+				<h4>Read</h4>
+				{FOOTER_LINKS.read.map((l) => <a href={l.href}>{l.label}</a>)}
+			</div>
+			<div>
+				<h4>{SITE_TITLE}</h4>
+				{FOOTER_LINKS.about.map((l) => <a href={l.href}>{l.label}</a>)}
+			</div>
+		</div>
+		<div class="colophon">
+			<span>(c) {year} {SITE_TITLE} / {AUTHOR.pronouns}</span>
+			<span>{COLOPHON_LINE}</span>
+		</div>
+	</div>
+</footer>

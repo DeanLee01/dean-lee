@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../../consts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const papers = (await getCollection('papers')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const working = papers.filter((p) => p.data.status === 'working');
+const published = papers.filter((p) => p.data.status === 'published');
+---
+
+<BaseLayout title={`Papers - ${SITE_TITLE}`} description="Working papers and published work - stochastic pricing, derivatives, AI economics.">
+	<div class="wrap">
+		<section class="sec" style="border-bottom:none;">
+			<div class="sec-head"><h2>Papers</h2><div class="rule"></div></div>
+			{
+				papers.length > 0 ? (
+					<div class="papers">
+						<div>
+							<h3>Working papers</h3>
+							{working.map((p) => (
+								<a class="paper" href={p.data.url ?? '#'}>
+									<span class="st wp">WP / draft</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+								</a>
+							))}
+						</div>
+						<div>
+							<h3>Published</h3>
+							{published.map((p) => (
+								<a class="paper" href={p.data.url ?? '#'}>
+									<span class="st">PUB</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+								</a>
+							))}
+						</div>
+					</div>
+				) : (
+					<div class="empty">
+						No papers catalogued yet.<br /><span class="g">*</span> Working drafts and published work will be listed here.
+					</div>
+				)
+			}
+		</section>
+	</div>
+</BaseLayout>

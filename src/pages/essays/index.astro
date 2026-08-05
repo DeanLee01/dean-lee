@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../../consts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const essays = (await getCollection('essays')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title={`Essays - ${SITE_TITLE}`} description="One careful dispatch on pricing, markets, or the economics of AI - most weeks.">
+	<div class="wrap">
+		<section class="sec" style="border-bottom:none;">
+			<div class="sec-head"><h2>All essays</h2><div class="rule"></div></div>
+			{
+				essays.length > 0 ? (
+					<div class="essays">
+						{essays.map((e) => (
+							<a class="entry" href={`/essays/${e.id}/`}>
+								<div class="no">{String(e.data.number ?? 0).padStart(2, '0')}</div>
+								<div>
+									{e.data.column && <div class="cat">{e.data.column}</div>}
+									<h4>{e.data.title}</h4>
+									<p>{e.data.description}</p>
+								</div>
+							</a>
+						))}
+					</div>
+				) : (
+					<div class="empty">
+						No essays yet.<br /><span class="g">*</span> The archive is empty. New dispatches will appear here as they ship.
+					</div>
+				)
+			}
+		</section>
+	</div>
+</BaseLayout>

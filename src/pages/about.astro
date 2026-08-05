@@ -1,0 +1,17 @@
+---
+import { AUTHOR, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title={`About - ${SITE_TITLE}`} description="On the author: quantitative finance, stochastic pricing, the economics of AI.">
+	<div class="wrap">
+		<div class="about" style="border-bottom:none;">
+			<div class="seal" aria-hidden="true">{AUTHOR.name.slice(0, 1)}</div>
+			<div>
+				<h3>On the author</h3>
+				<p>{AUTHOR.bio}</p>
+				<p class="vitals" style="margin-top:12px;">Born {AUTHOR.born} / {AUTHOR.edu} / {AUTHOR.pronouns}</p>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
