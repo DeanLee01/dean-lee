@@ -1,35 +1,38 @@
 ---
-import { NAV_LINKS, SITE_TAGLINE, SITE_TITLE, TOPLINE_TEXT } from '../consts';
+import { NAV_LINKS, SITE_TAGLINE, SITE_TITLE } from '../consts';
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
+const isHome = pathname === '/';
 ---
 
-<header class="site">
+<header class="site" data-home={isHome ? 'true' : 'false'}>
 	<div class="wrap">
-		<div class="topline">
-			<span>{TOPLINE_TEXT}</span>
-			<span class="r">
-				<button class="theme-toggle" id="themeBtn" aria-label="Toggle light/dark">
-					<span class="ico-sun" aria-hidden="true">LT</span>
-					<span class="ico-moon" aria-hidden="true">DK</span>
-				</button>
-			</span>
+		<div class="bar">
+			<a class="brand" href="/" aria-label={`${SITE_TITLE} home`}>
+				<span class="brand-mark" aria-hidden="true">D</span>
+				<span class="brand-text">
+					<span class="brand-name">{SITE_TITLE}</span>
+					<span class="brand-tag">{SITE_TAGLINE}</span>
+				</span>
+			</a>
+
+			<nav class="main" aria-label="Primary">
+				{
+					NAV_LINKS.map((link) => (
+						<a href={link.href} class:list={[{ active: isActive(link.href) }]}>
+							{link.label}
+						</a>
+					))
+				}
+				<a class="nav-cta" href="/#newsletter">Subscribe</a>
+			</nav>
+
+			<button class="theme-toggle" id="themeBtn" type="button" aria-label="Toggle light/dark">
+				<span class="ico-sun" aria-hidden="true">Light</span>
+				<span class="ico-moon" aria-hidden="true">Dark</span>
+			</button>
 		</div>
-		<div class="masthead">
-			<h1 class="title">{SITE_TITLE}</h1>
-			<p class="tagline">{SITE_TAGLINE}</p>
-		</div>
-		<nav class="main" aria-label="Primary">
-			{
-				NAV_LINKS.map((link) => (
-					<a href={link.href} class:list={[{ active: isActive(link.href) }]}>
-						{link.label}
-					</a>
-				))
-			}
-			<a href="/#newsletter">Subscribe</a>
-		</nav>
 	</div>
 </header>
 

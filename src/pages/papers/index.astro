@@ -13,7 +13,10 @@ const published = papers.filter((p) => p.data.status === 'published');
 <BaseLayout title={`Papers - ${SITE_TITLE}`} description="Working papers and published work - stochastic pricing, derivatives, AI economics.">
 	<div class="wrap">
 		<section class="sec" style="border-bottom:none;">
-			<div class="sec-head"><h2>Papers</h2><div class="rule"></div></div>
+			<div class="sec-head">
+				<div class="sec-kicker"><span class="sec-no">02</span><h2>Papers</h2></div>
+				<div class="rule"></div>
+			</div>
 			{
 				papers.length > 0 ? (
 					<div class="papers">
@@ -21,7 +24,9 @@ const published = papers.filter((p) => p.data.status === 'published');
 							<h3>Working papers</h3>
 							{working.map((p) => (
 								<a class="paper" href={p.data.url ?? '#'}>
-									<span class="st wp">WP / draft</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+									<span class="st wp">WP / draft</span>
+									<h4>{p.data.title}</h4>
+									<p class="pv">{p.data.venue}</p>
 								</a>
 							))}
 						</div>
@@ -29,14 +34,17 @@ const published = papers.filter((p) => p.data.status === 'published');
 							<h3>Published</h3>
 							{published.map((p) => (
 								<a class="paper" href={p.data.url ?? '#'}>
-									<span class="st">PUB</span><h4>{p.data.title}</h4><p class="pv">{p.data.venue}</p>
+									<span class="st">PUB</span>
+									<h4>{p.data.title}</h4>
+									<p class="pv">{p.data.venue}</p>
 								</a>
 							))}
 						</div>
 					</div>
 				) : (
 					<div class="empty">
-						No papers catalogued yet.<br /><span class="g">*</span> Working drafts and published work will be listed here.
+						No papers catalogued yet.<br />
+						<span class="g">*</span> Working drafts and published work will be listed here.
 					</div>
 				)
 			}

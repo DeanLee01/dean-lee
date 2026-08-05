@@ -11,7 +11,10 @@ const essays = (await getCollection('essays')).sort(
 <BaseLayout title={`Essays - ${SITE_TITLE}`} description="One careful dispatch on pricing, markets, or the economics of AI - most weeks.">
 	<div class="wrap">
 		<section class="sec" style="border-bottom:none;">
-			<div class="sec-head"><h2>All essays</h2><div class="rule"></div></div>
+			<div class="sec-head">
+				<div class="sec-kicker"><span class="sec-no">03</span><h2>All essays</h2></div>
+				<div class="rule"></div>
+			</div>
 			{
 				essays.length > 0 ? (
 					<div class="essays">
@@ -28,7 +31,8 @@ const essays = (await getCollection('essays')).sort(
 					</div>
 				) : (
 					<div class="empty">
-						No essays yet.<br /><span class="g">*</span> The archive is empty. New dispatches will appear here as they ship.
+						No essays yet.<br />
+						<span class="g">*</span> The archive is empty. New dispatches will appear here as they ship.
 					</div>
 				)
 			}
