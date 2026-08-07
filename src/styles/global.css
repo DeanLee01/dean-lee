@@ -1263,6 +1263,42 @@ footer.site {
 	padding-bottom: 0.12rem;
 }
 
+/* Social icon links — brand color icons */
+.socials a.social-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	border-bottom: none;
+	padding: 0.25rem 0.15rem;
+	color: var(--ink-soft);
+	text-decoration: none;
+	transition: color 0.15s ease, opacity 0.15s ease;
+}
+.socials a.social-link:hover {
+	color: var(--accent);
+}
+.socials a.social-link .social-icon {
+	display: inline-flex;
+	width: 16px;
+	height: 16px;
+	flex: 0 0 16px;
+}
+.socials a.social-link .social-icon svg {
+	width: 16px;
+	height: 16px;
+	display: block;
+	fill: var(--brand, currentColor);
+}
+.socials a.social-link .social-label {
+	border-bottom: 1px solid var(--rule-strong);
+	padding-bottom: 0.12rem;
+	line-height: 1.2;
+}
+.socials a.social-link:hover .social-label {
+	border-bottom-color: var(--accent);
+}
+
+
 .colophon {
 	display: flex;
 	flex-wrap: wrap;
