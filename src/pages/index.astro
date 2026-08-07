@@ -180,7 +180,11 @@ const fmt = (d: Date) => d.toLocaleDateString('en-CA').replace(/-/g, '.');
 					One essay on pricing, markets, or the economics of AI - for people who like being argued with,
 					gently. No price targets.
 				</p>
-				<form onsubmit="return false">
+				<form
+					method="post"
+					action="https://mail.komoai.net:8443/subscription/form"
+					accept-charset="utf-8"
+				>
 					<label for="em" class="skip">Email</label>
 					<input
 						id="em"
@@ -190,10 +194,15 @@ const fmt = (d: Date) => d.toLocaleDateString('en-CA').replace(/-/g, '.');
 						autocomplete="email"
 						spellcheck="false"
 						placeholder="you@example.com"
+						required
 					/>
+					{/* Listmonk honeypot */}
+					<input name="nonce" class="skip" tabindex="-1" autocomplete="off" value="" />
+					{/* dean-blog only — never product / Reid lists */}
+					<input type="hidden" name="l" value="b4b0fd69-370a-486b-bf0d-16d9d7d1c602" />
 					<button class="btn gold" type="submit">Subscribe</button>
 				</form>
-				<p class="fine">Weekly / unsubscribe anytime</p>
+				<p class="fine">Weekly / unsubscribe anytime · Dean Lee essays only (not product mail)</p>
 			</div>
 		</section>
 	</div>
