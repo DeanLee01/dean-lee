@@ -1,0 +1,19 @@
+---
+title: "The Intermediary Clause"
+description: "OpenAI's requirement that model routers and AI gateways obtain advance approval secures the inference baseline against third-party multi-model arbitrage."
+pubDate: 2026-10-22
+column: "AI Economics"
+number: 71
+---
+
+OpenAI quietly updated its Usage Policies on October 21, 2026, with enforcement scheduled for November 20. Tucked inside the section on approved use sits a new requirement: any service operating a model-access intermediary platform or AI gateway that allows third parties to access OpenAI models directly must obtain prior review and approval. Applications that embed models into proprietary software features remain exempt. The rule targets developer infrastructure designed to route requests across multiple model providers.
+
+Over the past two years, developer infrastructure gravitated toward model routers. Middleware projects such as LiteLLM, OpenRouter, and Portkey promised engineering teams a clean separation between application logic and model suppliers. The pitch was simple risk management. Instead of hardcoding an API key to a single proprietary provider, a company could treat inference as a fungible commodity. A router could inspect the prompt, dispatch routine summarization to a low-cost open model, test mid-tier tasks on Claude, and fall back to OpenAI when latency spiked or reasoning failed.
+
+That architecture creates severe adverse selection for the frontier provider. Frontier model clusters require immense capital expenditure, long-term power purchase agreements, and fixed depreciation schedules that must be amortized over billions of steady inference tokens. A model provider depends on high-volume, low-complexity tokens to generate predictable operating margins. When an intermediary routes eighty percent of routine traffic to local or open-source weights and forwards only the most complex, context-heavy prompts to the frontier API, the frontier provider absorbs the operational volatility. The lab becomes an uncompensated reserve battery, forced to provision peak capacity for difficult queries while losing the high-margin baseline traffic that pays for the data center.
+
+The dynamics mirror the microstructure of financial exchanges dealing with smart order routers and alternative trading systems. In equity markets, retail brokers route predictable, balanced retail flow into off-exchange internalizers, leaving public exchanges with toxic order flow and adverse selection. Exchanges responded by restructuring maker-taker pricing schedules, tightening direct connectivity agreements, and restricting unauthorized order aggregation. OpenAI is executing a similar defense. Requiring formal gateway approval allows the company to audit traffic distribution, monitor end-user attribution through its new SafetyIDs, and decline commercial access to intermediaries whose primary function is price arbitrage.
+
+The public announcement framed the policy update around safety compliance, consistency across partner services, and preventing competitive distillation. Those are valid legal and regulatory concerns, especially as frontier models handle sensitive enterprise workflows. Yet contractual approval gates operate as economic tolls. Once an intermediary must sign an agreement to route requests, the model provider can dictate terms, demand minimum volume commitments, or prohibit dynamic multi-model fallbacks that swap providers based on real-time spot pricing.
+
+The permissionless layer of generative AI tooling is contracting. For enterprise software buyers, the illusion that multi-model routing would permanently commoditize frontier labs into interchangeable utilities is meeting contractual reality. When the owner of the scarce compute asset controls access to the endpoint, the intermediary either accepts partner governance or finds its API keys revoked at the boundary.
