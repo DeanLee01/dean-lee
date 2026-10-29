@@ -56,3 +56,15 @@ export const FOOTER_LINKS = {
 		{ label: 'RSS feed', href: '/rss.xml' },
 	],
 };
+
+// Shared by the homepage and every essay; keep tool links out of article Markdown.
+export const RESEARCH_TOOLS = [
+	{
+		name: 'KolmoPDF',
+		kicker: 'pdf -> markdown',
+		href: 'https://kolmopdf.com',
+		host: 'kolmopdf.com',
+		blurb:
+			'VLM-based PDF parsing that keeps formulas, tables, code blocks, and multi-column order intact — clean text you can wire straight into an agent or knowledge base.',
+	},
+];

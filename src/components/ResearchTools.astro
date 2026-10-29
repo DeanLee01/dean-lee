@@ -1,0 +1,39 @@
+---
+import { RESEARCH_TOOLS } from '../consts';
+---
+
+<section class="research-tools" aria-label="Recommended research tools">
+	<p class="label">Research tools</p>
+	{
+		RESEARCH_TOOLS.map((tool) => (
+			<a class="research-tool" href={tool.href} target="_blank" rel="noopener">
+				<span class="tool-kicker">{tool.kicker}</span>
+				<h3>{tool.name}</h3>
+				<p>{tool.blurb}</p>
+				<span class="tool-host">{tool.host} -&gt;</span>
+			</a>
+		))
+	}
+</section>
+
+<style>
+	.research-tools { min-width: 0; }
+	.research-tools > .label { margin: 0 0 0.75rem; }
+	.research-tool {
+		display: block;
+		padding: 1.5rem;
+		border: 1px solid var(--rule-strong);
+		border-radius: var(--radius);
+		background: var(--surface);
+		color: var(--ink);
+		text-decoration: none;
+		box-shadow: var(--shadow-soft);
+	}
+	.research-tool:hover { border-color: var(--accent); }
+	.research-tool:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+	.tool-kicker, .tool-host { font-family: var(--mono); font-size: var(--text-xs); }
+	.tool-kicker { color: var(--muted); }
+	h3 { margin: 0.5rem 0 0.75rem; font-family: var(--serif); font-size: var(--text-lg); }
+	.research-tool p { margin: 0 0 1rem; font-size: var(--text-sm); line-height: 1.65; color: var(--ink-soft); }
+	.tool-host { color: var(--accent); overflow-wrap: anywhere; }
+</style>

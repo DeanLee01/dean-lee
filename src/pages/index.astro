@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import authorPhoto from '../assets/dean-lee.jpg';
 import { AUTHOR, COLUMNS, EPIGRAPH, SITE_DESCRIPTION, SITE_TAGLINE, SITE_TITLE } from '../consts';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ResearchTools from '../components/ResearchTools.astro';
 
 const essays = (await getCollection('essays')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -170,6 +171,10 @@ const fmt = (d: Date) => d.toLocaleDateString('en-CA').replace(/-/g, '.');
 					))
 				}
 			</div>
+		</section>
+
+		<section class="sec" id="tools">
+			<ResearchTools />
 		</section>
 
 		<section class="sec sec-news" id="newsletter">
