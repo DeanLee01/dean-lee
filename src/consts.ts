@@ -28,11 +28,10 @@ export const NAV_LINKS = [
 ];
 
 // Social links shown in the footer (icon + label).
-// icon keys: x | threads | reddit | github | youtube | bluesky
+// icon keys: x | reddit | github | youtube | bluesky
 // Omit entries until a real URL exists (no placeholder #).
 export const SOCIAL_LINKS = [
 	// X: pending handle/URL
-	{ label: 'Threads', href: 'https://www.threads.com/@deanlee.ai', icon: 'threads' },
 	{ label: 'Reddit', href: 'https://www.reddit.com/user/SaltsMoon/', icon: 'reddit' },
 	{ label: 'GitHub', href: 'https://github.com/DeanLee01', icon: 'github' },
 ];
