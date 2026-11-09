@@ -1,0 +1,19 @@
+---
+title: "The Collateral Limits of Accelerated Compute"
+description: "As hyperscaler capital expenditure outpaces direct revenue growth, banks and institutional debt desks are hesitating to syndicate loans for specialized data center infrastructure."
+pubDate: 2026-11-09
+column: "AI Economics"
+number: 89
+---
+
+Market attention on artificial intelligence infrastructure has begun shifting from equity valuations to debt syndication desks. In early November 2026, loan desks and institutional investors started exhibiting caution around financing packages tied to data center construction and accelerated computing campuses. A report from Capital Economics noted that capital expenditure across the four largest technology companies expanded more than 60 percent year over year in the third quarter. While corporate earnings calls emphasized long-term technological capability, the credit market focuses on a more immediate mechanical issue: how physical facilities are financed and who bears the liquidation risk.
+
+A large share of computing infrastructure is not funded purely out of corporate cash balances. Hyperscalers frequently partner with third-party developers, private credit funds, and infrastructure sponsors through special purpose vehicles to construct campuses, secure high-voltage electrical interconnects, and procure cooling equipment. For more than a decade, project finance lenders treated data centers as a specialized category of commercial real estate. Underwriters evaluated predictable multi-year lease contracts, assigned investment-grade ratings based on tenant parentage, and assumed that physical structures retained durable salvage value.
+
+That underwriting framework breaks down when applied to accelerated computing clusters. Traditional enterprise facilities house modular racks drawing five to ten kilowatts, which can be reconfigured for corporate tenants such as retail banks, healthcare networks, or logistics operators if an initial lease terminates. Modern training facilities, by contrast, require bespoke engineering designed for forty to one hundred kilowatts per rack, closed-loop liquid distribution, and dedicated substations. The primary asset inside the building is accelerated silicon that faces economic obsolescence within three to four years.
+
+This mismatch creates an asymmetric distribution of risk between equity and debt holders. Equity investors purchase uncapped optionality on potential software monopolies and productivity gains. Fixed-income syndicates, by contrast, receive a contractual coupon capped at par value while absorbing the left-tail exposure of physical asset depreciation. If an enterprise tenant renegotiates or abandons a lease commitment, lenders cannot easily repossess the equipment and liquidate it to cover senior principal. Repurposing a high-density training facility for standard enterprise computing requires capital expenditures that erode recovery values.
+
+The friction in loan syndication reflects this fundamental tension. Capital Economics projects that growth in artificial intelligence capital investment will decelerate in 2027, followed by an estimated contraction of roughly 10 percent in 2028 as infrastructure deployment catches up with corporate demand. When banks hesitate to warehouse project debt on their balance sheets, the cost of borrowing for developers rises.
+
+Hyperscalers retain ample cash flow to fund direct procurement, but third-party developers and private infrastructure vehicles depend heavily on active credit syndication. As lenders demand wider risk premiums and stricter coverage covenants, the financing cost of building new capacity increases. The physical expansion of computing power ultimately answers to the mathematics of debt underwriting, where collateral value matters more than technological ambition.
